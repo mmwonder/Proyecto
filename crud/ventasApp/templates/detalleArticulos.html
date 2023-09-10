@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Articulo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th scope="col">Código de artículo</th>
+                    <th scope="col">Talla</th>
+                    <th scope="col">Colores</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="" alt=""></td>
+                    <td>{{object.articulo_no}}</td>
+                    <td>{{object.talla}}</td>
+                    <td>{{object.colores}}</td>
+                </tr>
+            </tbody>
+        </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

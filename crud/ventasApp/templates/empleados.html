@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados</title>
+</head>
+<body>
+    <form action="/insertarEmpleado" method="post">{% csrf_token %} 
+        <input type="number" name="emp_no" id="emp_no" placeholder="Número de empleado">
+        <input type="text" name="apellido" id="apellido" placeholder="Apellido">
+        <input type="text" name="oficio" id="oficio" placeholder="Oficio">
+        <input type="number" name="director" id="director" placeholder="Director">
+        <input type="date" name="fecha_alta" id="fecha_alta" placeholder="Fecha de Alta">
+        <input type="number" name="salario" id="salario" min="0" placeholder="Salario">
+        <input type="number" name="comision" id="comision" min="0" placeholder="Comision">
+        <input type="text" name="telefono" id="telefono" min="0" placeholder="Telefono">
+        <input type="number" name="depto_no" id="depto_no" min="0" placeholder="Número de departamento">
+        <input type="submit" value="Insertar">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Oficio</th>
+                <th>Director</th>
+                <th>Fecha de Alta</th>
+                <th>Salario</th>
+                <th>Comision</th>
+                <th>Telefono</th>
+                <th>Departamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in object_list %}
+                <tr>
+                    <td>{{c.emp_no}}</td>
+                    <td>{{c.oficio}}</td>
+                    <td>{{c.director}}</td>
+                    <td>{{c.fecha_alta}}</td>
+                    <td>{{c.salario}}</td>
+                    <td>{{c.comision}}</td>
+                    <td>{{c.telefono}}</td>
+                    <td>{{c.depto_no_id}}</td>
+                    <td><a href="detalleDepartamento/{{c.depto_no_id}}" target="_blank" onclick="window.open(this.href, this.target, 'width=600,height=200,top=150,left=250');return false;">Detalle</a></td>
+                    <td><a href="eliminarEmpleado/{{c.depto_no}}">Eliminar</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

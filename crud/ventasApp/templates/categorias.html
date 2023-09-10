@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorías</title>
+</head>
+<body>
+      <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in object_list %}
+                <tr>
+                    <td>{{c.articulo_no}}</td>
+                    <td>{{c.descripcion}}</td>
+                    <td>{{c.precio}}</td>
+                    <td><a href="detalleArticulo/{{c.articulo_no_id}}" target="_blank" onclick="window.open(this.href, this.target, 'width=600,height=200,top=150,left=250');return false;">Ver Más...</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

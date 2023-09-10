@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+</head>
+<body>
+    <form action="/insertarProducto" method="post">{% csrf_token %} 
+        <input type="number" name="producto_no" id="producto_no" placeholder="Número de producto">
+        <input type="text" name="descripcion" id="descripcion" placeholder="Descripción">
+        <input type="number" name="precio_actual" id="precio_actual" min="0" step="0.1" placeholder="Precio">
+        <input type="number" name="stock_disponible" id="stock_disponible" min="0" step="1" placeholder="Stock">
+        <input type="submit" value="Insertar">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in object_list %}
+                <tr>
+                    <td>{{c.producto_no}}</td>
+                    <td>{{c.descripcion}}</td>
+                    <td>{{c.precio_actual}}</td>
+                    <td>{{c.stock_disponible}}</td>
+                    <td><a href="eliminarProducto/{{c.producto_no}}">Eliminar</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

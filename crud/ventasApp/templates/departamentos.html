@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departamentos</title>
+</head>
+<body>
+    <form action="/insertarDepartamento" method="post" class="departamentoForm" id="departamentoForm">{% csrf_token %} 
+        <input type="number" name="depto_no" id="depto_no" placeholder="Número de departamento">
+        <input type="text" name="dnombre" id="dnombre" placeholder="Nombre">
+        <input type="text" name="localidad" id="localidad" placeholder="Localidad">
+        <input type="submit" value="Insertar">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Nombre</th>
+                <th>Localidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in object_list %}
+                <tr>
+                    <td>{{c.depto_no}}</td>
+                    <td>{{c.dnombre}}</td>
+                    <td>{{c.localidad}}</td>
+                    <td><a href="modificarDepartamento/{{c.pk}}">Modificar</a></td>
+                    <td><a href="eliminarDepartamento/{{c.depto_no}}">Eliminar</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
